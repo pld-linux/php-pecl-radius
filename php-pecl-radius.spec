@@ -6,12 +6,12 @@
 Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radius-a
 Name:		php-pecl-%{_modname}
-Version:	1.2
+Version:	1.2.1
 Release:	1
 License:	PHP/BSD
 Group:		Development/Languages/PHP
+# Source0-md5:	4eb69cf36d6b6292235508f38a012f4e
 Source0:	http://pear.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	f9b4a9dba5571e35580740b3338271e1
 URL:		http://www.bretterklieber.com/php/
 BuildRequires:	php-devel
 Requires:	php-common
