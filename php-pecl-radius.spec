@@ -1,10 +1,8 @@
-# TODO:
-# - *.la file is not included, because it's not correctly generated. To be fixed.
 %define		_modname	radius
 %define		_status		stable
 
 Summary:	Radius client library
-Summary(pl):	Biblioteka klienta Radius-a
+Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.1
 Release:	1
@@ -25,15 +23,15 @@ This package is based on the libradius of FreeBSD. This PECL adds full
 support for Radius Authentication (RFC 2865) and Radius Accounting
 (RFC 2866). This package is available for Unix and for Windows.
 
-This extension has in PEAR status: %{_status}
+This extension has in PEAR status: %{_status}.
 
 %description -l pl
 Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje pe³ne
 wsparcie dla autentyfikacji Radius (RFC 2865) oraz dla accountingu
-Radius (RFC 2866). Ten pakiet jest osi±galny dla systemów Unix oraz w
-Windowsie.
+Radius (RFC 2866). Ten pakiet jest osi±galny dla systemów Unix oraz
+Windows.
 
-To rozszerzenie ma w PEAR status: %{_status}
+To rozszerzenie ma w PEAR status: %{_status}.
 
 %prep
 %setup -q -c
