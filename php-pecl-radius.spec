@@ -23,7 +23,7 @@ This package is based on the libradius of FreeBSD. This PECL adds full
 support for Radius Authentication (RFC 2865) and Radius Accounting
 (RFC 2866). This package is available for Unix and for Windows.
 
-This extension has in PEAR status: %{_status}.
+In PECL status of this package is: %{_status}.
 
 %description -l pl
 Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje pe³ne
@@ -31,7 +31,7 @@ wsparcie dla autentyfikacji Radius (RFC 2865) oraz dla accountingu
 Radius (RFC 2866). Ten pakiet jest osi±galny dla systemów Unix oraz
 Windows.
 
-To rozszerzenie ma w PEAR status: %{_status}.
+To rozszerzenie ma w PECL status: %{_status}.
 
 %prep
 %setup -q -c
