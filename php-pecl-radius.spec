@@ -4,12 +4,12 @@
 Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
-Version:	1.2.2
+Version:	1.2.4
 Release:	1
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	7440f4fb3cc4e514ac6feb9334d29b6f
+# Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
 URL:		http://pecl.php.net/package/radius/	
 BuildRequires:	php-devel
 Requires:	php-common
@@ -47,9 +47,10 @@ CPPFLAGS="-DHAVE_CONFIG_H -I%{_prefix}/X11R6/include/X11/" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{extensionsdir}
 
-install %{_modname}-%{version}/modules/%{_modname}.so $RPM_BUILD_ROOT%{extensionsdir}
+cd %{_modname}-%{version}
+%{__make} install \
+	INSTALL_ROOT=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
