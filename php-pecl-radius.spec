@@ -8,9 +8,9 @@ Version:	1.2.2
 Release:	1
 License:	PHP/BSD
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_modname}-%{version}.tgz
+Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	7440f4fb3cc4e514ac6feb9334d29b6f
-URL:		http://pear.php.net/package/radius/	
+URL:		http://pecl.php.net/package/radius/	
 BuildRequires:	php-devel
 Requires:	php-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
