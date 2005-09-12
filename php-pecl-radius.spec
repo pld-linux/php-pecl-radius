@@ -10,7 +10,7 @@ License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
-URL:		http://pecl.php.net/package/radius/	
+URL:		http://pecl.php.net/package/radius/
 BuildRequires:	php-devel
 Requires:	php-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
