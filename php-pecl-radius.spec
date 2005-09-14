@@ -1,22 +1,23 @@
 %define		_modname	radius
 %define		_status		stable
+%define		_sysconfdir	/etc/php
+%define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
-Release:	3
+Release:	4
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
 URL:		http://pecl.php.net/package/radius/
-BuildRequires:	php-devel
-Requires:	php-common
+BuildRequires:	php-devel >= 3:5.0.0
+BuildRequires:	rpmbuild(macros) >= 1.238
+%{?requires_php_extension}
+Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_sysconfdir	/etc/php
-%define		extensionsdir	%{_libdir}/php
 
 %description
 This package is based on the libradius of FreeBSD. This PECL adds full
@@ -48,22 +49,32 @@ phpize
 %install
 rm -rf $RPM_BUILD_ROOT
 
-cd %{_modname}-%{version}
-%{__make} install \
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/conf.d
+%{__make} -C %{_modname}-%{version} install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT
+cat <<'EOF' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.d/%{_modname}.ini
+; Enable %{_modname} extension module
+extension=%{_modname}.so
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_sbindir}/php-module-install install %{_modname} %{_sysconfdir}/php.ini
+[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
+[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
 
-%preun
-if [ "$1" = "0" ]; then
-	%{_sbindir}/php-module-install remove %{_modname} %{_sysconfdir}/php.ini
+%postun
+if [ "$1" = 0 ]; then
+	[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
+	[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
 fi
+
+%triggerpostun -- %{name} < 1.2.4-4
+%{_sbindir}/php-module-install remove %{_modname} %{_sysconfdir}/php.ini
 
 %files
 %defattr(644,root,root,755)
 %doc %{_modname}-%{version}/examples/*.php
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/%{_modname}.ini
 %attr(755,root,root) %{extensionsdir}/%{_modname}.so
