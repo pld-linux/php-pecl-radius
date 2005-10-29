@@ -2,19 +2,18 @@
 %define		_status		stable
 %define		_sysconfdir	/etc/php
 %define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
-
 Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
-Release:	4
+Release:	5
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
 URL:		http://pecl.php.net/package/radius/
 BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.238
+BuildRequires:	rpmbuild(macros) >= 1.254
 %{?requires_php_extension}
 Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
