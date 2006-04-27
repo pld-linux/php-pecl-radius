@@ -6,7 +6,7 @@ Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
-Release:	7
+Release:	8
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
@@ -15,6 +15,7 @@ URL:		http://pecl.php.net/package/radius/
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.254
 %{?requires_php_extension}
+Requires(triggerpostun):	sed >= 4.0
 Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,7 +71,7 @@ if [ "$1" = 0 ]; then
 fi
 
 %triggerpostun -- %{name} < 1.2.4-4
-%{_sbindir}/php-module-install remove %{_modname} %{_sysconfdir}/php.ini
+%{__sed} -i -e '/^extension[[:space:]]*=[[:space:]]*%{_modname}\.so/d' %{_sysconfdir}/php.ini
 
 %files
 %defattr(644,root,root,755)
