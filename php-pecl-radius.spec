@@ -13,7 +13,7 @@ Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
 URL:		http://pecl.php.net/package/radius/
 BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.254
+BuildRequires:	rpmbuild(macros) >= 1.322
 %{?requires_php_extension}
 Requires(triggerpostun):	sed >= 4.0
 Requires:	%{_sysconfdir}/conf.d
