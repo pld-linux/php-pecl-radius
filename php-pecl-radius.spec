@@ -6,7 +6,7 @@ Summary:	Radius client library
 Summary(pl):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
-Release:	8
+Release:	9
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
@@ -43,7 +43,7 @@ phpize
 %configure
 
 %{__make} \
-	CPPFLAGS="-DHAVE_CONFIG_H -I%{_prefix}/X11R6/include/X11/" \
+	CPPFLAGS="-DHAVE_CONFIG_H -I/usr/X11R6/include/X11/" \
 	CFLAGS_CLEAN="%{rpmcflags}"
 
 %install
