@@ -2,7 +2,7 @@
 %define		_status		stable
 %define		_sysconfdir	/etc/php
 Summary:	Radius client library
-Summary(pl):	Biblioteka klienta Radiusa
+Summary(pl.UTF-8):   Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
 Release:	9
@@ -25,10 +25,10 @@ support for Radius Authentication (RFC 2865) and Radius Accounting
 
 In PECL status of this package is: %{_status}.
 
-%description -l pl
-Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje pe³ne
+%description -l pl.UTF-8
+Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje peÅ‚ne
 wsparcie dla autentyfikacji Radius (RFC 2865) oraz dla accountingu
-Radius (RFC 2866). Ten pakiet jest osi±galny dla systemów Unix oraz
+Radius (RFC 2866). Ten pakiet jest osiÄ…galny dla systemÃ³w Unix oraz
 Windows.
 
 To rozszerzenie ma w PECL status: %{_status}.
