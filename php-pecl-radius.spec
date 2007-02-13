@@ -2,7 +2,7 @@
 %define		_status		stable
 %define		_sysconfdir	/etc/php
 Summary:	Radius client library
-Summary(pl.UTF-8):   Biblioteka klienta Radiusa
+Summary(pl.UTF-8):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.4
 Release:	9
