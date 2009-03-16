@@ -4,12 +4,12 @@
 Summary:	Radius client library
 Summary(pl.UTF-8):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
-Version:	1.2.4
-Release:	9
+Version:	1.2.5
+Release:	1
 License:	PHP/BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	3d48ccb9486b9e8839d814d7ff318091
+# Source0-md5:	25d867dab8def71ab1b3e2410491ff4d
 URL:		http://pecl.php.net/package/radius/
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.344
