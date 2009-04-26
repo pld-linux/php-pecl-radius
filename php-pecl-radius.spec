@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Biblioteka klienta Radiusa
 Name:		php-pecl-%{_modname}
 Version:	1.2.5
 Release:	1
-License:	PHP/BSD
+License:	BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	25d867dab8def71ab1b3e2410491ff4d
