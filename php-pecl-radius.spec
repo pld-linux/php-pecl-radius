@@ -1,18 +1,18 @@
-%define		_modname	radius
-%define		_status		stable
-%define		_sysconfdir	/etc/php
+%define		php_name	php%{?php_suffix}
+%define		modname	radius
+%define		status		stable
 Summary:	Radius client library
 Summary(pl.UTF-8):	Biblioteka klienta Radiusa
-Name:		php-pecl-%{_modname}
+Name:		%{php_name}-pecl-%{modname}
 Version:	1.2.5
 Release:	5
 License:	BSD
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	25d867dab8def71ab1b3e2410491ff4d
 URL:		http://pecl.php.net/package/radius/
-BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.344
+BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires(triggerpostun):	sed >= 4.0
 Requires:	php(core) >= 5.0.4
@@ -23,7 +23,7 @@ This package is based on the libradius of FreeBSD. This PECL adds full
 support for Radius Authentication (RFC 2865) and Radius Accounting
 (RFC 2866). This package is available for Unix and for Windows.
 
-In PECL status of this package is: %{_status}.
+In PECL status of this package is: %{status}.
 
 %description -l pl.UTF-8
 Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje pełne
@@ -31,13 +31,13 @@ wsparcie dla autentyfikacji Radius (RFC 2865) oraz dla accountingu
 Radius (RFC 2866). Ten pakiet jest osiągalny dla systemów Unix oraz
 Windows.
 
-To rozszerzenie ma w PECL status: %{_status}.
+To rozszerzenie ma w PECL status: %{status}.
 
 %prep
-%setup -q -c
+%setup -qc
+mv %{modname}-%{version}/* .
 
 %build
-cd %{_modname}-%{version}
 phpize
 %configure
 
@@ -47,13 +47,12 @@ phpize
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d
-%{__make} -C %{_modname}-%{version} install \
+%{__make} install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
-; Enable %{_modname} extension module
-extension=%{_modname}.so
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+; Enable %{modname} extension module
+extension=%{modname}.so
 EOF
 
 %clean
@@ -68,10 +67,10 @@ if [ "$1" = 0 ]; then
 fi
 
 %triggerpostun -- %{name} < 1.2.4-4
-%{__sed} -i -e '/^extension[[:space:]]*=[[:space:]]*%{_modname}\.so/d' %{php_sysconfdir}/php.ini
+%{__sed} -i -e '/^extension[[:space:]]*=[[:space:]]*%{modname}\.so/d' %{php_sysconfdir}/php.ini
 
 %files
 %defattr(644,root,root,755)
-%doc %{_modname}-%{version}/examples/*.php
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{_modname}.ini
-%attr(755,root,root) %{php_extensiondir}/%{_modname}.so
+%doc examples/*.php
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%attr(755,root,root) %{php_extensiondir}/%{modname}.so
