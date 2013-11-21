@@ -1,15 +1,14 @@
 %define		php_name	php%{?php_suffix}
-%define		modname	radius
-%define		status		stable
+%define		modname		radius
 Summary:	Radius client library
 Summary(pl.UTF-8):	Biblioteka klienta Radiusa
 Name:		%{php_name}-pecl-%{modname}
-Version:	1.2.5
-Release:	5
+Version:	1.2.7
+Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
-# Source0-md5:	25d867dab8def71ab1b3e2410491ff4d
+# Source0-md5:	6d7ecfebf3f1a337cbe9fdce491aa762
 URL:		http://pecl.php.net/package/radius/
 BuildRequires:	%{php_name}-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.650
@@ -23,15 +22,11 @@ This package is based on the libradius of FreeBSD. This PECL adds full
 support for Radius Authentication (RFC 2865) and Radius Accounting
 (RFC 2866). This package is available for Unix and for Windows.
 
-In PECL status of this package is: %{status}.
-
 %description -l pl.UTF-8
 Ten pakiet jest bazowany na libradius z FreeBSD. Ten PECL dodaje pełne
 wsparcie dla autentyfikacji Radius (RFC 2865) oraz dla accountingu
 Radius (RFC 2866). Ten pakiet jest osiągalny dla systemów Unix oraz
 Windows.
-
-To rozszerzenie ma w PECL status: %{status}.
 
 %prep
 %setup -qc
